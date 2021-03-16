@@ -1151,6 +1151,11 @@ def add_abbreviation(source_text, replacement_text, match_suffix=False, timeout=
     callback = lambda: write(replacement)
     return add_word_listener(source_text, callback, match_suffix=match_suffix, timeout=timeout)
 
+    def add_abbreviation2(source_text, replacement_text, match_suffix=True, timeout=1):
+    replacement = '\b'*(len(source_text)+1) + replacement_text
+    callback = lambda: write(replacement)
+    return add_word_listener(source_text, callback, match_suffix=match_suffix, timeout=timeout)
+
 # Aliases.
 register_word_listener = add_word_listener
 register_abbreviation = add_abbreviation
